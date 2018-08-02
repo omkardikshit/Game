@@ -68,7 +68,7 @@ void render(){
     window.clear(Color(0,255,0));
     world.render(window);
     player.render(window);
-    cam.update(player,window);
+    cam.update(player,world,window);
     window.display();
 }
 
@@ -76,7 +76,8 @@ int main()
 {
     running = true;
     ContextSettings settings;
-    window.create(VideoMode(width,height),title,Style::Close);
+    settings.antialiasingLevel = 5;
+    window.create(VideoMode(width,height),title,Style::Close,settings);
     window.setPosition(Vector2i((monitor.width-width)/2,(monitor.height-height)/2));
     run();
     return 0;
